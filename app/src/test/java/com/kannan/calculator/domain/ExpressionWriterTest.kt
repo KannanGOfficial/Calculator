@@ -272,4 +272,18 @@ class ExpressionWriterTest {
 
         Assert.assertEquals(expected, actual)
     }
+
+    @Test
+    fun `Simple expression given correct output`(){
+        expressionWriter.evaluate(CalculatorAction.Number(8))
+        expressionWriter.evaluate(CalculatorAction.Operator(OperationType.ADD))
+        expressionWriter.evaluate(CalculatorAction.Number(10))
+        expressionWriter.evaluate(CalculatorAction.Calculate)
+
+        val actual = expressionWriter.expression
+
+        val expected = "18.0"
+
+        Assert.assertEquals(expected, actual)
+    }
 }
